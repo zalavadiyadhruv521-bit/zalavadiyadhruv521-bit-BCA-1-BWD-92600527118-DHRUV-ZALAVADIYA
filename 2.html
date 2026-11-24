@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Personal Details</title>
 </head>
 <body>
-    
-    <h1>Welcome</h1>
 
-    <a href="2.login.html">Login</a>
-    <br><br>
+<script>
+    // Accept details from the user
+    var name = prompt("Enter Your Name:");
+    var age = prompt("Enter Your Age:");
+    var gender = prompt("Enter Your Gender:");
+    var city = prompt("Enter Your City:");
+    var state = prompt("Enter Your State:");
+    var country = prompt("Enter Your Country:");
 
-    <a href="2.registration.html">Registration</a>
-    
+    // Display all details
+    alert("Personal Details\n\n" +
+          "Name: " + name + "\n" +
+          "Age: " + age + "\n" +
+          "Gender: " + gender + "\n" +
+          "City: " + city + "\n" +
+          "State: " + state + "\n" +
+          "Country: " + country);
+</script>
+
 </body>
 </html>

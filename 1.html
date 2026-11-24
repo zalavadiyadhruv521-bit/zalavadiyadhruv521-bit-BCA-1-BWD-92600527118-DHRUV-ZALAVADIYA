@@ -1,36 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Details</title>
 </head>
 <body>
-    
-    <h2>Student Details</h2>
 
-    <table border="1">
-        <tr>
-            <th>Student Name</th>
-            <th>City</th>
-            <th>Age</th>
-            <th>Gender</th>
-        </tr>
+<script>
+    // Get student details using prompt dialog boxes
+    var name = prompt("Enter Student Name:");
+    var studentClass = prompt("Enter Student Class:");
+    var stream = prompt("Enter Student Stream:");
 
-        <tr>
-            <td>Dhruv</td>
-            <td>Rajkot</td>
-            <td>19.3</td>
-            <td>Male</td>
-        </tr>
+    // Display all details in an alert box
+    alert("Student Details\n" +
+          "Name: " + name + "\n" +
+          "Class: " + studentClass + "\n" +
+          "Stream: " + stream);
+</script>
 
-        <tr>
-            <td>Hitiksha</td>
-            <td>Rajkot</td>
-            <td>17.6</td>
-            <td>Female</td>
-        </tr>
-
-    </table>
 </body>
 </html>

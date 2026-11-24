@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Mouse Events</title>
+</head>
+<body>
+
+<h2>JavaScript Mouse Events</h2>
+
+<button onclick="clickEvent()">Click Me</button>
+
+<button ondblclick="doubleClickEvent()">Double Click Me</button>
+
+<button onmousedown="mouseDownEvent()"
+        onmouseup="mouseUpEvent()">
+    Mouse Down / Up
+</button>
+
+<button onmouseover="mouseOverEvent()"
+        onmouseout="mouseOutEvent()">
+    Move Mouse Here
+</button>
+
+<button onmousemove="mouseMoveEvent()">
+    Move Mouse
+</button>
+
+<button oncontextmenu="rightClickEvent(event)">
+    Right Click Me
+</button>
+
+<script>
+
+function clickEvent() {
+    alert("Mouse Click Event Occurred!");
+}
+
+function doubleClickEvent() {
+    alert("Mouse Double Click Event Occurred!");
+}
+
+function mouseDownEvent() {
+    alert("Mouse Down Event Occurred!");
+}
+
+function mouseUpEvent() {
+    alert("Mouse Up Event Occurred!");
+}
+
+function mouseOverEvent() {
+    alert("Mouse Over Event Occurred!");
+}
+
+function mouseOutEvent() {
+    alert("Mouse Out Event Occurred!");
+}
+
+function mouseMoveEvent() {
+    alert("Mouse Move Event Occurred!");
+}
+
+function rightClickEvent(event) {
+    event.preventDefault();
+    alert("Mouse Right Click Event Occurred!");
+}
+
+</script>
+
+</body>
+</html>

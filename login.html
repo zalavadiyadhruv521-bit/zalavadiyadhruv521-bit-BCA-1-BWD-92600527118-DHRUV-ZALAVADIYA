@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Account Portal</title>
+<style>
+  :root { --ink:#172033; --muted:#6b7280; --primary:#5b5ce2; --primary2:#7778ff; --line:#e5e7eb; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; font-family:Inter,Segoe UI,Arial,sans-serif; color:var(--ink); background:linear-gradient(135deg,#eef2ff 0%,#f8fafc 50%,#e0f2fe 100%); display:grid; place-items:center; padding:24px; }
+  .shell { width:min(100%,980px); min-height:600px; display:grid; grid-template-columns: .95fr 1.05fr; background:#fff; border-radius:26px; overflow:hidden; box-shadow:0 24px 70px #25325a20; }
+  .hero { padding:48px 42px; color:white; background:radial-gradient(circle at 10% 10%,#9293ff 0,transparent 32%),linear-gradient(145deg,#4546c8,#252a74); display:flex; flex-direction:column; justify-content:space-between; }
+  .brand { font-weight:800; font-size:20px; letter-spacing:.3px; display:flex; align-items:center; gap:10px; }
+  .brand-mark { width:34px; height:34px; border-radius:11px; background:#ffffff25; display:grid; place-items:center; font-size:19px; }
+  .hero h1 { font-size:clamp(30px,4vw,43px); line-height:1.12; margin:52px 0 16px; letter-spacing:-1.3px; }
+  .hero p { color:#e0e7ff; line-height:1.7; margin:0; max-width:320px; }
+  .hero-note { color:#d7dcff; font-size:13px; }
+  .main { padding:42px clamp(24px,5vw,60px); display:flex; flex-direction:column; justify-content:center; }
+  .tabs { display:flex; gap:8px; background:#f3f4f6; padding:5px; border-radius:12px; margin-bottom:30px; }
+  .tab { border:0; background:transparent; color:#6b7280; padding:11px 12px; border-radius:9px; flex:1; font-weight:700; cursor:pointer; font-size:14px; }
+  .tab.active { color:var(--ink); background:#fff; box-shadow:0 2px 8px #11182712; }
+  h2 { margin:0 0 8px; font-size:28px; letter-spacing:-.6px; }
+  .sub { margin:0 0 26px; color:var(--muted); line-height:1.5; font-size:14px; }
+  .field { margin-bottom:16px; }
+  label { display:block; margin-bottom:7px; font-weight:650; font-size:13px; color:#374151; }
+  input { width:100%; padding:13px 14px; border:1px solid #d9deea; border-radius:10px; outline:none; font-size:14px; background:#fff; transition:border .15s,box-shadow .15s; }
+  input:focus { border-color:var(--primary); box-shadow:0 0 0 3px #5b5ce21a; }
+  .rowline { display:flex; justify-content:space-between; align-items:center; gap:12px; margin:1px 0 20px; font-size:13px; }
+  .remember { display:flex; gap:8px; align-items:center; color:var(--muted); }
+  .remember input { width:15px; height:15px; margin:0; }
+  a { color:var(--primary); font-weight:650; text-decoration:none; cursor:pointer; }
+  a:hover { text-decoration:underline; }
+  .primary { width:100%; border:0; color:white; background:linear-gradient(90deg,var(--primary),var(--primary2)); padding:14px; border-radius:10px; font-weight:750; font-size:15px; cursor:pointer; box-shadow:0 7px 16px #5b5ce22b; }
+  .primary:hover { filter:brightness(1.04); }
+  .message { display:none; margin:0 0 16px; padding:11px 12px; border-radius:9px; font-size:13px; line-height:1.45; }
+  .message.error { display:block; color:#991b1b; background:#fef2f2; border:1px solid #fecaca; }
+  .message.success { display:block; color:#166534; background:#f0fdf4; border:1px solid #bbf7d0; }
+  .switch { text-align:center; color:var(--muted); font-size:13px; margin:22px 0 0; }
+  .hidden { display:none !important; }
+  .dashboard { text-align:center; padding:22px 0; }
+  .avatar { width:76px; height:76px; margin:0 auto 18px; display:grid; place-items:center; border-radius:50%; color:white; font-size:28px; font-weight:800; background:linear-gradient(135deg,#5556d8,#8b5cf6); }
+  .dashboard .sub { margin-bottom:25px; }
+  .secondary { margin-top:12px; width:100%; border:1px solid var(--line); background:#fff; border-radius:10px; padding:12px; color:#374151; font-weight:700; cursor:pointer; }
+  .foot { margin-top:28px; text-align:center; font-size:11px; color:#9ca3af; line-height:1.5; }
+  @media (max-width:720px) { body{padding:12px;} .shell{grid-template-columns:1fr;min-height:auto;} .hero{padding:25px 27px;} .hero h1{font-size:27px;margin:28px 0 10px;} .hero p{font-size:14px;} .hero-note{margin-top:24px;} .main{padding:28px 24px 32px;} .tabs{margin-bottom:25px;} }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="hero">
+    <div class="brand"><span class="brand-mark">✦</span> Account Portal</div>
+    <div>
+      <h1>Your space.<br>One secure sign-in.</h1>
+      <p>Sign in to continue, create an account in a few steps, or reset your password whenever you need to.</p>
+    </div>
+    <div class="hero-note">Simple account access · Responsive design</div>
+  </aside>
+  <main class="main">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-view="login">Login</button>
+      <button class="tab" data-view="register">Register</button>
+    </div>
+    <div id="message" class="message" role="status" aria-live="polite"></div>
+
+    <section id="loginView">
+      <h2>Welcome back</h2>
+      <p class="sub">Enter your details to sign in to your account.</p>
+      <form id="loginForm">
+        <div class="field"><label for="loginEmail">Email address</label><input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+        <div class="field"><label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter your password" required minlength="6"></div>
+        <div class="rowline"><label class="remember"><input id="remember" type="checkbox"> Remember me</label><a id="forgotLink">Forgot password?</a></div>
+        <button class="primary" type="submit">Sign in</button>
+      </form>
+      <p class="switch">Don't have an account? <a data-go="register">Create one</a></p>
+    </section>
+
+    <section id="registerView" class="hidden">
+      <h2>Create account</h2>
+      <p class="sub">Fill in the details below to get started.</p>
+      <form id="registerForm">
+        <div class="field"><label for="regName">Full name</label><input id="regName" type="text" autocomplete="name" placeholder="Your full name" required maxlength="80"></div>
+        <div class="field"><label for="regEmail">Email address</label><input id="regEmail" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+        <div class="field"><label for="regPassword">Password</label><input id="regPassword" type="password" autocomplete="new-password" placeholder="At least 6 characters" required minlength="6"></div>
+        <div class="field"><label for="regConfirm">Confirm password</label><input id="regConfirm" type="password" autocomplete="new-password" placeholder="Re-enter your password" required minlength="6"></div>
+        <button class="primary" type="submit">Create account</button>
+      </form>
+      <p class="switch">Already registered? <a data-go="login">Sign in</a></p>
+    </section>
+
+    <section id="forgotView" class="hidden">
+      <h2>Reset password</h2>
+      <p class="sub">Enter the email address associated with your account.</p>
+      <form id="forgotForm">
+        <div class="field"><label for="forgotEmail">Email address</label><input id="forgotEmail" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+        <button class="primary" type="submit">Continue</button>
+      </form>
+      <p class="switch"><a data-go="login">← Back to login</a></p>
+    </section>
+
+    <section id="dashboardView" class="hidden dashboard">
+      <div class="avatar" id="avatar">U</div>
+      <h2 id="welcomeTitle">You're signed in!</h2>
+      <p class="sub" id="welcomeSub">Welcome to your account.</p>
+      <button class="primary" id="logoutBtn">Log out</button>
+      <button class="secondary" id="backLoginBtn">Back to login page</button>
+    </section>
+    <div class="foot">Demo account portal. See the security note in the instructions before using with real users.</div>
+  </main>
+</div>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const viewIds = { login: 'loginView', register: 'registerView', forgot: 'forgotView', dashboard: 'dashboardView' };
+  const tabs = $('tabs');
+  const message = $('message');
+  const USERS_KEY = 'accountPortalDemoUsers';
+  const SESSION_KEY = 'accountPortalDemoSession';
+
+  function readUsers() {
+    try { return JSON.parse(localStorage.getItem(USERS_KEY) || '[]'); } catch { return []; }
+  }
+  function writeUsers(users) { localStorage.setItem(USERS_KEY, JSON.stringify(users)); }
+  function showMessage(text, type = 'success') {
+    message.textContent = text;
+    message.className = 'message ' + type;
+  }
+  function clearMessage() { message.textContent = ''; message.className = 'message'; }
+  function setView(view) {
+    Object.entries(viewIds).forEach(([name, id]) => $(id).classList.toggle('hidden', name !== view));
+    tabs.classList.toggle('hidden', view === 'forgot' || view === 'dashboard');
+    [...tabs.querySelectorAll('.tab')].forEach(tab => tab.classList.toggle('active', tab.dataset.view === view));
+    clearMessage();
+  }
+  function go(view) { setView(view); }
+  document.querySelectorAll('[data-view]').forEach(el => el.addEventListener('click', () => go(el.dataset.view)));
+  document.querySelectorAll('[data-go]').forEach(el => el.addEventListener('click', () => go(el.dataset.go)));
+  $('forgotLink').addEventListener('click', () => {
+    $('forgotEmail').value = $('loginEmail').value;
+    go('forgot');
+  });
+
+  $('registerForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = $('regName').value.trim();
+    const email = $('regEmail').value.trim().toLowerCase();
+    const password = $('regPassword').value;
+    const confirm = $('regConfirm').value;
+    if (password !== confirm) return showMessage('The passwords do not match.', 'error');
+    const users = readUsers();
+    if (users.some(user => user.email === email)) return showMessage('An account with this email already exists. Please log in.', 'error');
+    users.push({ name, email, password });
+    writeUsers(users);
+    $('loginEmail').value = email;
+    $('registerForm').reset();
+    go('login');
+    showMessage('Account created successfully. You can now sign in.');
+  });
+
+  $('loginForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const email = $('loginEmail').value.trim().toLowerCase();
+    const password = $('loginPassword').value;
+    const user = readUsers().find(item => item.email === email && item.password === password);
+    if (!user) return showMessage('Incorrect email or password. Please try again or register first.', 'error');
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify({ email: user.email }));
+    if ($('remember').checked) localStorage.setItem(SESSION_KEY, JSON.stringify({ email: user.email }));
+    else localStorage.removeItem(SESSION_KEY);
+    renderDashboard(user);
+  });
+
+  $('forgotForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const email = $('forgotEmail').value.trim().toLowerCase();
+    const user = readUsers().find(item => item.email === email);
+    if (!user) return showMessage('No account was found with that email address.', 'error');
+    // Demo-only recovery: prompt the user to set a replacement password locally.
+    const newPassword = prompt('Demo password reset for ' + email + '. Enter a new password (at least 6 characters):');
+    if (newPassword === null) return;
+    if (newPassword.length < 6) return showMessage('Password must be at least 6 characters. Please try again.', 'error');
+    const users = readUsers();
+    const index = users.findIndex(item => item.email === email);
+    users[index].password = newPassword;
+    writeUsers(users);
+    $('loginEmail').value = email;
+    go('login');
+    showMessage('Password updated for this demo. You can now sign in with your new password.');
+  });
+
+  function renderDashboard(user) {
+    setView('dashboard');
+    $('avatar').textContent = (user.name || user.email || 'U').trim().charAt(0).toUpperCase();
+    $('welcomeTitle').textContent = 'Welcome, ' + user.name + '!';
+    $('welcomeSub').textContent = 'You are signed in as ' + user.email + '.';
+  }
+  function logout() {
+    sessionStorage.removeItem(SESSION_KEY);
+    localStorage.removeItem(SESSION_KEY);
+    $('loginForm').reset();
+    go('login');
+    showMessage('You have been logged out.');
+  }
+  $('logoutBtn').addEventListener('click', logout);
+  $('backLoginBtn').addEventListener('click', logout);
+
+  // Restore a demo session when "Remember me" was selected.
+  try {
+    const saved = localStorage.getItem(SESSION_KEY) || sessionStorage.getItem(SESSION_KEY);
+    if (saved) {
+      const session = JSON.parse(saved);
+      const user = readUsers().find(item => item.email === session.email);
+      if (user) renderDashboard(user);
+    }
+  } catch { /* Ignore an invalid demo session. */ }
+})();
+</script>
+</body>
+</html>
