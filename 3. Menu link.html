@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        /* Menu bar */
+        .menu {
+            background-color: #333;
+            text-align: center;
+        }
+
+        /* Remove default list styling */
+        .menu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Display menu items horizontally */
+        .menu li {
+            display: inline-block;
+        }
+
+        /* Menu links */
+        .menu a { display: block;
+            color: white;
+            text-decoration: none;
+            padding: 18px 25px;
+            font-size: 18px;
+        }
+
+        /* Mouse hover effect */
+        .menu a:hover {
+            background-color: #04AA6D;
+        }
+
+        /* Active link */
+        .menu .active {
+            background-color: #04AA6D;
+        }
+
+        /* Page content */
+        .content {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .content h1 {
+            color: #333;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Horizontal Menu -->
+    <nav class="menu">
+        <ul>
+            <li>
+                <a href="#" class="active">Home</a>
+            </li>
+
+            <li>
+                <a href="#">About</a>
+            </li>
+
+            <li>
+                <a href="#">Services</a>
+            </li>
+
+            <li>
+                <a href="#">Products</a>
+            </li>
+
+            <li>
+                <a href="#">Gallery</a>
+            </li>
+
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="content">
+
+        <h1>Horizontal Menu Links</h1>
+
+        <p>
+            The menu links are displayed horizontally using
+            <strong>display: inline-block</strong>.
+        </p>
+
+        <p>
+            Move your mouse over the menu items to see the hover effect.
+        </p>
+
+    </div>
+
+</body>
+</html>

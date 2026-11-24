@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">My Website</a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+
+        <!-- Heading -->
+        <div class="text-center mb-5">
+            <h1 class="display-4">Bootstrap Elements Demo</h1>
+            <p class="lead">
+                A simple webpage demonstrating commonly used Bootstrap components.
+            </p>
+        </div>
+
+
+        <!-- Alerts -->
+        <h2>Alerts</h2>
+
+        <div class="alert alert-success">
+            Success! Your operation was completed successfully.
+        </div>
+
+        <div class="alert alert-warning">
+            Warning! Please check your information.
+        </div>
+
+        <div class="alert alert-danger">
+            Error! Something went wrong.
+        </div>
+
+
+        <!-- Buttons -->
+        <h2 class="mt-5">Buttons</h2>
+
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-success">Success</button>
+        <button class="btn btn-danger">Danger</button>
+        <button class="btn btn-warning">Warning</button>
+        <button class="btn btn-info">Info</button>
+
+
+        <!-- Badges -->
+        <h2 class="mt-5">Badges</h2>
+
+        <h4>
+            Notifications
+            <span class="badge bg-danger">5</span>
+        </h4>
+
+        <span class="badge bg-primary">Bootstrap</span>
+        <span class="badge bg-success">HTML</span>
+        <span class="badge bg-warning text-dark">CSS</span>
+
+
+        <!-- Cards -->
+        <h2 class="mt-5">Cards</h2>
+
+        <div class="row">
+
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">HTML</h5>
+                        <p class="card-text">
+                            HTML is used to create the structure of webpages.
+                        </p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">CSS</h5>
+                        <p class="card-text">
+                            CSS is used to style and design webpages.
+                        </p>
+                        <a href="#" class="btn btn-success">Learn More</a>
+                    </div>
+                     </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bootstrap</h5>
+                        <p class="card-text">
+                            Bootstrap provides ready-made responsive components.
+                        </p>
+                        <a href="#" class="btn btn-warning">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Table -->
+        <h2 class="mt-5">Table</h2>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Dhruv</td>
+                        <td>HTML</td>
+                        <td>
+                            <span class="badge bg-success">Completed</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Hitiksha</td>
+                        <td>CSS</td>
+                        <td>
+                            <span class="badge bg-warning text-dark">In Progress</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Dhritiksha</td>
+                        <td>Bootstrap</td>
+                        <td>
+                            <span class="badge bg-primary">Started</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- Form -->
+        <h2 class="mt-5">Form</h2>
+
+        <form>
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Enter your name"
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Enter your email"
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="course" class="form-label">Select Course</label>
+                <select class="form-select" id="course">
+                    <option selected>Choose a course</option>
+                    <option>HTML</option>
+                    <option>CSS</option>
+                    <option>Bootstrap</option>
+                    <option>JavaScript</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea
+                    class="form-control"
+                    id="message"
+                    rows="4"
+                    placeholder="Enter your message"
+                ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+
+        </form>
+
+
+        <!-- Modal -->
+        <h2 class="mt-5">Modal</h2>
+
+        <button
+            type="button"
+            class="btn btn-dark"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+        >
+            Open Modal
+        </button>
+
+        <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Bootstrap Modal
+                        </h5>
+
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                        ></button>
+                    </div>
+
+                    <div class="modal-body">
+                        This is an example of a Bootstrap modal window.
+                    </div>
+
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+
+                        <button type="button" class="btn btn-primary">
+                            Save Changes
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center p-4 mt-5">
+        <p class="mb-0">
+            &copy; 2026 My Bootstrap Demo
+        </p>
+    </footer>
+
+
+    <!-- Bootstrap JavaScript -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+             
+</body>
+</html>

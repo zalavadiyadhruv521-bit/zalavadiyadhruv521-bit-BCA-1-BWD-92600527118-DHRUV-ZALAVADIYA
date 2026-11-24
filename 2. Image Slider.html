@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 30px;
+            color: #333;
+        }
+
+        /* Slider container */
+        .slider {
+            position: relative;
+            width: 800px;
+            height: 450px;
+            margin: 30px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Each slide */
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            animation: slider 12s infinite;
+        }
+
+        /* Images */
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Text overlay */
+        .text {
+            position: absolute;
+
+            /* z-index places text above image */
+            z-index: 2;
+
+            bottom: 40px;
+            left: 40px;
+            right: 40px;
+
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .text h2 {
+            margin: 0 0 10px;
+            font-size: 30px;
+        }
+
+        .text p {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        /* Dark overlay */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            background-color: rgba(0, 0, 0, 0.25);
+
+            /* Below text but above image */
+            z-index: 1;
+        }
+
+        /* Slide animation */
+        .slide:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .slide:nth-child(2) {
+            animation-delay: 4s;
+        }
+
+        .slide:nth-child(3) {
+            animation-delay: 8s;
+        }
+
+        @keyframes slider {
+
+            0% {
+                opacity: 0;
+            }
+
+            8% {
+                opacity: 1;
+            }
+
+            30% {
+                opacity: 1;
+            }
+
+            38% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Explanation */
+        .info {
+            width: 800px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .info h2 {
+            color: #333;
+        }
+
+        code {
+            background-color: #eee;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 850px) {
+
+            .slider,
+            .info {
+                width: 90%;
+            }
+
+            .slider {
+                height: 350px;
+            }
+
+            .text h2 {
+                font-size: 24px;
+            }
+
+            .text p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Image Slider Using Z-Index</h1>
+
+    <!-- Image Slider -->
+    <div class="slider">
+
+        <!-- Slide 1 -->
+        <div class="slide">
+
+            <img
+                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=80"
+                alt="Mountain landscape"
+            >
+
+            <div class="overlay"></div>
+
+            <div class="text"
+            <h2>Beautiful Mountains</h2>
+                <p>
+                    Explore the beauty and peace of nature.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Slide 2 -->
+        <div class="slide">
+
+            <img
+                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80"
+                alt="Beach"
+            >
+
+            <div class="overlay"></div>
+
+            <div class="text">
+                <h2>Beautiful Beach</h2>
+                <p>
+                    Enjoy the relaxing view of the ocean.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Slide 3 -->
+        <div class="slide">
+
+            <img
+                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80"
+                alt="Forest"
+            >
+
+            <div class="overlay"></div>
+
+            <div class="text">
+                <h2>Green Forest</h2>
+                <p>
+                    Discover the calm and beauty of the forest.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Explanation -->
+    <div class="info">
+
+        <h2>How Z-Index is Used</h2>
+
+        <p>
+            This image slider demonstrates how
+            <strong>z-index</strong> controls the stacking order
+            of elements.
+        </p>
+
+        <p>
+            <strong>Image:</strong>
+            The image is at the bottom layer.
+        </p>
+
+        <p>
+            <strong>Overlay:</strong>
+            The dark overlay uses
+            <code>z-index: 1</code>.
+        </p>
+
+        <p>
+            <strong>Text:</strong>
+            The text uses
+            <code>z-index: 2</code>,
+            so it appears above both the image and overlay.
+        </p>
+
+        <p>
+            In simple terms:
+        </p>
+
+        <p>
+            Image → <code>z-index: 0</code><br>
+            Overlay → <code>z-index: 1</code><br>
+            Text → <code>z-index: 2</code>
+        </p>
+
+    </div>
+
+</body>
+</html>

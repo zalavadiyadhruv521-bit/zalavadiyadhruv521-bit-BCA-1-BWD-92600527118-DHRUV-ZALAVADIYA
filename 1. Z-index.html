@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><Z-index></title>
+        <style>
+             body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: 40px auto;
+            background-color: white;
+            border: 2px solid #333;
+        }
+
+        /* Box 1 */
+        .box1 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+             background-color: red;
+            top: 50px;
+            left: 100px;
+            z-index: 1;
+            color: white;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Box 2 */
+        .box2 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            top: 100px;
+            left: 200px;
+            z-index: 2;
+            color: white;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Box 3 */
+        .box3 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            top: 150px;
+            left: 150px;
+            z-index: 3;
+            color: white;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+
+        .explanation {
+            max-width: 600px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        code {
+            background-color: #eee;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+        </style>
+</head>
+<body>
+     <h1>CSS Z-Index Demonstration</h1>
+
+    <p>
+        The element with the highest <code>z-index</code>
+        appears on top.
+    </p>
+
+    <div class="container">
+
+        <div class="box1">
+            Red Box<br>
+            z-index: 1
+        </div>
+
+        <div class="box2">
+            Blue Box<br>
+            z-index: 2
+        </div>
+
+        <div class="box3">
+            Green Box<br>
+            z-index: 3
+        </div>
+
+    </div>
+
+    <div class="explanation">
+        <h2>How z-index Works</h2>
+
+        <p>
+            The three boxes overlap each other.
+            Their stacking order is determined by their
+            <strong>z-index</strong> values.
+        </p>
+
+        <p>
+            Red Box → <code>z-index: 1</code>
+        </p>
+
+        <p>
+            Blue Box → <code>z-index: 2</code>
+        </p>
+
+        <p>
+            Green Box → <code>z-index: 3</code>
+        </p>
+
+        <p>
+            Therefore, the <strong>green box appears on top</strong>
+            because it has the highest z-index value.
+        </p>
+    </div>
+
+</body>
+</html>
